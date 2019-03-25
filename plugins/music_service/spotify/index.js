@@ -440,7 +440,7 @@ ControllerSpop.prototype.spotifyClientCredentialsGrant = function () {
 
     // Plug in your Spotify Refresh token below - not the access token - the refresh token!
 
-    var refreshToken = '**********';
+    var refreshToken = self.config.get('refresh_token');
     self.spotifyApi.setRefreshToken(refreshToken);
     self.spotifyApi.refreshAccessToken()
         .then(function (data) {
@@ -1322,8 +1322,9 @@ ControllerSpop.prototype.getUIConfig = function () {
 
             uiconf.sections[0].content[0].value = self.config.get('username');
             uiconf.sections[0].content[1].value = self.config.get('password');
-            uiconf.sections[0].content[2].value = self.config.get('bitrate');
-
+			uiconf.sections[0].content[2].value = self.config.get('refresh_token');
+            uiconf.sections[0].content[3].value = self.config.get('bitrate');
+			
             defer.resolve(uiconf);
         })
         .fail(function () {
@@ -1899,9 +1900,10 @@ ControllerSpop.prototype.createSPOPDFile = function () {
 
             var conf1 = data.replace("${username}", self.config.get('username'));
             var conf2 = conf1.replace("${password}", self.config.get('password'));
-            var conf3 = conf2.replace("${bitrate}", self.config.get('bitrate'));
-            var conf4 = conf3.replace("${outdev}", hwdev);
-            var conf5 = conf4.replace("${refresh_token}", self.config.get('refresh_token'));
+            var conf3 = conf2.replace("${refresh_token}", self.config.get('refresh_token'));
+			var conf4 = conf3.replace("${bitrate}", self.config.get('bitrate'));
+			var conf5 = conf4.replace("${outdev}", hwdev);
+            
 
             fs.writeFile("/etc/spopd.conf", conf5, 'utf8', function (err) {
                 if (err)
@@ -1929,8 +1931,9 @@ ControllerSpop.prototype.saveSpotifyAccount = function (data) {
 
     self.config.set('username', data['username']);
     self.config.set('password', data['password']);
-    self.config.set('bitrate', data['bitrate']);
-    self.config.set('refresh_token', data['refresh_token']);
+	self.config.set('bitrate', data['bitrate']);
+	self.config.set('refresh_token', data['refresh_token']);
+ 
 
     self.rebuildSPOPDAndRestartDaemon()
         .then(function (e) {
