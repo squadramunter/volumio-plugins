@@ -14,7 +14,8 @@
         "data": [
           "username",
           "password",
-          "bitrate"
+          "bitrate",
+	  "refresh_token"
         ]
       },
       "content": [
@@ -35,12 +36,20 @@
           "value": ""
         },
         {
+          "id": "refresh_token",
+          "type":"text",
+          "element": "input",
+          "doc": "This is the Refresh Token of your Spotify account",
+          "label": "TRANSLATE.REFRESH_TOKEN",
+          "value": ""
+	},
+        {
           "id":"bitrate",
           "element": "switch",
           "doc": "High bitrate",
           "label": "TRANSLATE.HIGH_BITRATE",
           "value": true
-        }
+        }   
       ]
    }
   ]
