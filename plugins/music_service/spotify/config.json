@@ -11,6 +11,10 @@
     "type": "string",
     "value": ""
   },
+  "refresh_token": {
+    "type": "string",
+    "value": ""
+  },
   "bitrate": {
     "type": "boolean",
     "value": true
