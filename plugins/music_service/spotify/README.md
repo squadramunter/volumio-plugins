@@ -1,6 +1,6 @@
 <p>Spotify plugin for Volumio2</p><br>
 <p>Type the following commands to download and install plugin:</p>
-<pre><code>wget 
+<pre><code>wget https://github.com/majko96/volumio-plugins/raw/master/plugins/music_service/spotify/spotify.zip
 mkdir ./spotify
 miniunzip spotify.zip -d ./spotify
 cd ./spotify
