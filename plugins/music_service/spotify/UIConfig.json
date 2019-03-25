@@ -39,7 +39,7 @@
           "id": "refresh_token",
           "type":"text",
           "element": "input",
-          "doc": "This is the Refresh Token of your Spotify account",
+          "doc": "This is the Refresh Token generate by Spotify. You can get it on http://54.86.144.136:8888/",
           "label": "TRANSLATE.REFRESH_TOKEN",
           "value": ""
 	},
