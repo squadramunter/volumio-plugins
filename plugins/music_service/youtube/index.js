@@ -18,7 +18,7 @@ var https = require('https');
 var secrets = require('./auth.json');
 var token = require('./authToken.json');
 
-var ytapi_key = "AIzaSyAl1Xq9DwdE_KD4AtPaE4EJl3WZe2zCqg4";
+var ytapi_key = "";
 
 module.exports = Youtube;
 
